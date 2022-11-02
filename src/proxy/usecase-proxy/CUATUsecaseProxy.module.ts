@@ -1,8 +1,8 @@
 import { DynamicModule, Module } from '@nestjs/common';
 import { GetConsoleUserAccessTokenUC } from '@Src/application/usecases/consoleUserAccessToken/getConsoleUserAccessToken';
 import { ValidateAccessTokenUC } from '@Src/application/usecases/consoleUserAccessToken/validationAccessToken';
-import { ConsoleUserAccessTokenRepository } from '../repositories/consoleUserAccessToken/consoleUserAccessToken.repository';
-import { ConsoleUserAccessTokenRepositoryModule } from '../repositories/consoleUserAccessToken/consoleUserAccessTokenRepository.module';
+import { ConsoleUserAccessTokenRepository } from '../../infra/repositories/consoleUserAccessToken/consoleUserAccessToken.repository';
+import { ConsoleUserAccessTokenRepositoryModule } from '../../infra/repositories/consoleUserAccessToken/consoleUserAccessTokenRepository.module';
 import { UseCaseProxy } from './usecase.proxy';
 
 @Module({

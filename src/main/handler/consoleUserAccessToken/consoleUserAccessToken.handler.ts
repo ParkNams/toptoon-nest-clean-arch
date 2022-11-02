@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { UseCaseProxy } from '@Src/infra/usecase-proxy/usecase.proxy';
-import { CUATUseCaseProxyModule } from '@Src/infra/usecase-proxy/CUATUsecaseProxy.module';
+import { UseCaseProxy } from '@Src/proxy/usecase-proxy/usecase.proxy';
+import { CUATUseCaseProxyModule } from '@Src/proxy/usecase-proxy/CUATUsecaseProxy.module';
 import {
   GetConsoleUserAccessTokenData,
   ValidateAccessTokenData,

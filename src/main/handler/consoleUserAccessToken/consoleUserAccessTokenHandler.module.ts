@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { CUATUseCaseProxyModule } from '@Src/infra/usecase-proxy/CUATUsecaseProxy.module';
+import { CUATUseCaseProxyModule } from '@Src/proxy/usecase-proxy/CUATUsecaseProxy.module';
 import {
   GetConsoleUserAccessTokenHandler,
   ValidateAccessTokenHandler,
