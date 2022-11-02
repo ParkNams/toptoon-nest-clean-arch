@@ -9,10 +9,9 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
-  // app.use(compression());
-  // app.use(cookieParser());
-  // app.use(requestIp.mw());
+  app.use(compression());
+  app.use(cookieParser());
+  app.use(requestIp.mw());
   app.use((req: Request, _res: Response, next: NextFunction) => {
     req.uuid = uuidV4();
     next();
