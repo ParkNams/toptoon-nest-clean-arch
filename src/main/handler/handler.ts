@@ -2,7 +2,7 @@ import { ICallback } from 'src/domain/type/common.interface';
 import { HttpResponse } from '../../application/helper/response';
 
 export abstract class Handler<T> {
-  abstract perform(input: any, callback: ICallback<HttpResponse> | any);
+  abstract perform(input: any, callback: ICallback<T>);
 
   handle(input: any, callback: ICallback<T>) {
     this.perform(input, (err, data) => {
