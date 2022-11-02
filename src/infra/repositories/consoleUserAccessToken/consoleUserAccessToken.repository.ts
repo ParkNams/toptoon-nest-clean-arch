@@ -1,6 +1,6 @@
 import { Inject } from '@nestjs/common';
 import {
-  ConsoleUserAccessTokenGetOne,
+  GetConsoleUserAccessTokenData,
   ConsoleUserAccessTokenRepositoryInterface,
   ValidateAccessTokenData,
 } from 'src/domain/repositories/consoleUserAccessToken';
@@ -16,8 +16,8 @@ export class ConsoleUserAccessTokenRepository
     private readonly slave: EntityManager,
   ) {}
   getOne(
-    consoleUserId: ConsoleUserAccessTokenGetOne['Input'],
-    callback: ICallback<ConsoleUserAccessTokenGetOne['Output']>,
+    consoleUserId: GetConsoleUserAccessTokenData['Input'],
+    callback: ICallback<GetConsoleUserAccessTokenData['Output']>,
   ) {
     this.slave
       .findOne(ConsoleUserAccessTokenEntity, {
