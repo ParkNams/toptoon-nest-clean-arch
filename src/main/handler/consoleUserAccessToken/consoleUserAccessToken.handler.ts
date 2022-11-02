@@ -7,16 +7,13 @@ import {
 } from 'src/domain/repositories/consoleUserAccessToken';
 import { ICallback } from 'src/domain/type/common.interface';
 import { GetConsoleUserAccessTokenUC } from '@Src/application/usecases/consoleUserAccessToken/getConsoleUserAccessToken';
-import {
-  HttpResponse,
-  serverError,
-  success,
-} from '../../../application/helper/response';
 import { Handler } from '../handler';
 import { ValidateAccessTokenUC } from '@Src/application/usecases/consoleUserAccessToken/validationAccessToken';
 
 @Injectable()
-export class GetConsoleUserAccessTokenHandler extends Handler {
+export class GetConsoleUserAccessTokenHandler extends Handler<
+  ConsoleUserAccessTokenGetOne['Output']
+> {
   constructor(
     @Inject(CUATUseCaseProxyModule.GET_CONSOLE_USER_ACCESS_TOKNE_PROXY)
     private readonly proxy: UseCaseProxy<GetConsoleUserAccessTokenUC>,
@@ -26,21 +23,21 @@ export class GetConsoleUserAccessTokenHandler extends Handler {
 
   perform(
     input: any,
-    callback: ICallback<
-      HttpResponse<ConsoleUserAccessTokenGetOne['Output'] | Error | string>
-    >,
+    callback: ICallback<ConsoleUserAccessTokenGetOne['Output']>,
   ) {
     this.proxy.getInstance().excute(input, (err, token) => {
       if (err) {
-        return callback(err, serverError(err));
+        return callback(err);
       }
-      return callback(null, success(token));
+      return callback(null, token);
     });
   }
 }
 
 @Injectable()
-export class ValidateAccessTokenHandler extends Handler {
+export class ValidateAccessTokenHandler extends Handler<
+  ValidateAccessTokenData['Output']
+> {
   constructor(
     @Inject(CUATUseCaseProxyModule.ACCESS_TOKEN_VALIDATE_PROXY)
     private readonly proxy: UseCaseProxy<ValidateAccessTokenUC>,
@@ -49,10 +46,7 @@ export class ValidateAccessTokenHandler extends Handler {
   }
   perform(
     input: ValidateAccessTokenData['Input'],
-    callback: ICallback<
-      | HttpResponse<ValidateAccessTokenData['Output'] | Error | string>
-      | ValidateAccessTokenData['Output']
-    >,
+    callback: ICallback<ValidateAccessTokenData['Output']>,
   ) {
     this.proxy.getInstance().excute(input, (err, result) => {
       if (err) {
