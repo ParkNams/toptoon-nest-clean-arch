@@ -3,12 +3,12 @@ import { Response } from 'express';
 import { GetConsoleUserAccessTokenHandler } from '@Src/application/handler/consoleUserAccessToken/consoleUserAccessToken.handler';
 
 import { GetConsoleUserAccessTokenDto } from 'src/domain/dto/consoleUserAccessToken.dto';
-import { Adaptor } from '../adaptors/adaptor';
+import { HttpAdaptor } from '../adaptors/adaptor';
 
 @Controller()
 export class AuthController {
   constructor(
-    private readonly adaptor: Adaptor,
+    private readonly adaptor: HttpAdaptor,
     private readonly getConsoleUserAccessTokenHandler: GetConsoleUserAccessTokenHandler,
   ) {}
 

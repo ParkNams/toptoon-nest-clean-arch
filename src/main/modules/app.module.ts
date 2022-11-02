@@ -7,9 +7,11 @@ import { ConsoleUserAccessTokenHandlerModule } from '../../application/handler/c
 import { AdminValidationMiddleware } from '../middleware/adminValidation.middleware';
 import { XrayProxyModule } from '@Src/proxy/aws-proxy/xrayProxy.module';
 import { NextFunction, Request, Response } from 'express';
-import { XrayTool } from '@Src/infra/aws/xray/xray.tool';
 import { AwsProxy } from '@Src/proxy/aws-proxy/aws.proxy';
 import { XrayOpenSegmentUC } from '@Src/application/usecases/aws/xray/xrayOpenSegment';
+import { Adaptor } from '../adaptors/adaptor';
+import { xrayOpenSegmentHandler } from '@Src/application/handler/aws/xray.handler';
+import { AwsHandler } from '@Src/application/handler/aws/awsHandler.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
@@ -25,17 +27,17 @@ import { XrayOpenSegmentUC } from '@Src/application/usecases/aws/xray/xrayOpenSe
     ]),
   ],
   controllers: [AppController],
-  providers: [],
+  providers: [Adaptor, AwsHandler],
 })
 export class AppModule implements NestModule {
   constructor(
-    @Inject(XrayProxyModule.XRAY_OPEN_SEGMENT_PROXY)
-    private readonly openSegment: AwsProxy<XrayOpenSegmentUC>,
+    private readonly adaptor: Adaptor,
+    private readonly xrayOpenSegment: xrayOpenSegmentHandler,
   ) {}
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply((req: Request, res: Response, next: NextFunction) => {
-        this.openSegment.getInstance().execute()(req, res, next);
+        this.adaptor.adapt(this.xrayOpenSegment, null)(req, res, next);
       }, AdminValidationMiddleware)
       .forRoutes('/');
   }

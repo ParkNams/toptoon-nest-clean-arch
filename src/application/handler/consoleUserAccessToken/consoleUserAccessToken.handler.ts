@@ -7,11 +7,11 @@ import {
 } from '@Src/domain/interface/repositories/consoleUserAccessToken';
 import { ICallback } from 'src/domain/type/common.interface';
 import { GetConsoleUserAccessTokenUC } from '@Src/application/usecases/consoleUserAccessToken/getConsoleUserAccessToken';
-import { Handler } from '../handler';
+import { CallbackHandler } from '../handler';
 import { ValidateAccessTokenUC } from '@Src/application/usecases/consoleUserAccessToken/validationAccessToken';
 
 @Injectable()
-export class GetConsoleUserAccessTokenHandler extends Handler<
+export class GetConsoleUserAccessTokenHandler extends CallbackHandler<
   GetConsoleUserAccessTokenData['Output']
 > {
   constructor(
@@ -35,7 +35,7 @@ export class GetConsoleUserAccessTokenHandler extends Handler<
 }
 
 @Injectable()
-export class ValidateAccessTokenHandler extends Handler<
+export class ValidateAccessTokenHandler extends CallbackHandler<
   ValidateAccessTokenData['Output']
 > {
   constructor(

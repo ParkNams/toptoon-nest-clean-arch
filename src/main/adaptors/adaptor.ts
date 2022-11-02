@@ -1,11 +1,13 @@
-import { Handler } from '@Src/application/handler/handler';
+import { CallbackHandler, Handler } from '@Src/application/handler/handler';
 import * as express from 'express';
 import { Injectable } from '@nestjs/common';
 import { clientError, success } from '@Src/application/helper/response';
 
 @Injectable()
-export class Adaptor {
-  adapt(handler: Handler<any>): (param: any, res: express.Response) => void {
+export class HttpAdaptor {
+  adapt(
+    handler: CallbackHandler<any>,
+  ): (param: any, res: express.Response) => void {
     return (param, res) => {
       handler.handle(param, (err, result) => {
         if (err) {
@@ -14,5 +16,12 @@ export class Adaptor {
         return success(result, res);
       });
     };
+  }
+}
+
+@Injectable()
+export class Adaptor {
+  adapt(handler: Handler<any>, input: any): any {
+    return handler.handle(input);
   }
 }
