@@ -3,8 +3,8 @@ import { ICallback } from '../type/common.interface';
 
 export interface ConsoleUserAccessTokenRepositoryInterface {
   getOne: (
-    input: ConsoleUserAccessTokenGetOne['Input'],
-    callback: ICallback<ConsoleUserAccessTokenGetOne['Output']>,
+    input: GetConsoleUserAccessTokenData['Input'],
+    callback: ICallback<GetConsoleUserAccessTokenData['Output']>,
   ) => void;
 
   validateAccessToken: (
@@ -13,7 +13,7 @@ export interface ConsoleUserAccessTokenRepositoryInterface {
   ) => void;
 }
 
-export interface ConsoleUserAccessTokenGetOne {
+export interface GetConsoleUserAccessTokenData {
   Input: number;
   Output: ConsoleUserAccessToken;
 }

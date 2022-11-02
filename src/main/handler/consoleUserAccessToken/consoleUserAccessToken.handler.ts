@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { UseCaseProxy } from '@Src/infra/usercase-proxy/usecase.proxy';
 import { CUATUseCaseProxyModule } from '@Src/infra/usercase-proxy/CUATUsecaseProxy.module';
 import {
-  ConsoleUserAccessTokenGetOne,
+  GetConsoleUserAccessTokenData,
   ValidateAccessTokenData,
 } from 'src/domain/repositories/consoleUserAccessToken';
 import { ICallback } from 'src/domain/type/common.interface';
@@ -12,7 +12,7 @@ import { ValidateAccessTokenUC } from '@Src/application/usecases/consoleUserAcce
 
 @Injectable()
 export class GetConsoleUserAccessTokenHandler extends Handler<
-  ConsoleUserAccessTokenGetOne['Output']
+  GetConsoleUserAccessTokenData['Output']
 > {
   constructor(
     @Inject(CUATUseCaseProxyModule.GET_CONSOLE_USER_ACCESS_TOKNE_PROXY)
@@ -23,7 +23,7 @@ export class GetConsoleUserAccessTokenHandler extends Handler<
 
   perform(
     input: any,
-    callback: ICallback<ConsoleUserAccessTokenGetOne['Output']>,
+    callback: ICallback<GetConsoleUserAccessTokenData['Output']>,
   ) {
     this.proxy.getInstance().excute(input, (err, token) => {
       if (err) {
