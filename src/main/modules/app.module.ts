@@ -3,7 +3,7 @@ import { AppController } from '../routers/app.controller';
 import { ConfigModule } from '@nestjs/config';
 import { RouterModule } from '@nestjs/core';
 import { AuthModule } from './auth.module';
-import { ConsoleUserAccessTokenHandlerModule } from '../handler/consoleUserAccessToken/consoleUserAccessTokenHandler.module';
+import { ConsoleUserAccessTokenHandlerModule } from '../../application/handler/consoleUserAccessToken/consoleUserAccessTokenHandler.module';
 import { AdminValidationMiddleware } from '../middleware/adminValidation.middleware';
 import { XrayProxyModule } from '@Src/proxy/aws-proxy/xrayProxy.module';
 import { NextFunction, Request, Response } from 'express';

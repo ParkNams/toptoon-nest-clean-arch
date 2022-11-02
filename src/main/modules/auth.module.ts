@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ConsoleUserAccessTokenHandlerModule } from '@Src/main/handler/consoleUserAccessToken/consoleUserAccessTokenHandler.module';
+import { ConsoleUserAccessTokenHandlerModule } from '@Src/application/handler/consoleUserAccessToken/consoleUserAccessTokenHandler.module';
 import { Adaptor } from '../adaptors/adaptor';
 import { AuthController } from '../routers/auth.controller';
 

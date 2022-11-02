@@ -4,7 +4,7 @@ import { ValidateAccessTokenData } from '@Src/domain/interface/repositories/cons
 import { AwsProxy } from '@Src/proxy/aws-proxy/aws.proxy';
 import { XrayProxyModule } from '@Src/proxy/aws-proxy/xrayProxy.module';
 import { NextFunction, Request, Response } from 'express';
-import { ValidateAccessTokenHandler } from '../handler/consoleUserAccessToken/consoleUserAccessToken.handler';
+import { ValidateAccessTokenHandler } from '../../application/handler/consoleUserAccessToken/consoleUserAccessToken.handler';
 
 @Injectable()
 export class AdminValidationMiddleware implements NestMiddleware {

@@ -1,6 +1,6 @@
 import { Body, Controller, Post, Res } from '@nestjs/common';
 import { Response } from 'express';
-import { GetConsoleUserAccessTokenHandler } from '@Src/main/handler/consoleUserAccessToken/consoleUserAccessToken.handler';
+import { GetConsoleUserAccessTokenHandler } from '@Src/application/handler/consoleUserAccessToken/consoleUserAccessToken.handler';
 
 import { GetConsoleUserAccessTokenDto } from 'src/domain/dto/consoleUserAccessToken.dto';
 import { Adaptor } from '../adaptors/adaptor';

@@ -1,5 +1,5 @@
 import { ICallback } from 'src/domain/type/common.interface';
-import { HttpResponse } from '../../application/helper/response';
+import { HttpResponse } from '../helper/response';
 
 export abstract class Handler<T> {
   abstract perform(input: any, callback: ICallback<T>);
