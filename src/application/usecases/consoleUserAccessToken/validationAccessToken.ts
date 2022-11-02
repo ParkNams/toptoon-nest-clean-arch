@@ -1,7 +1,7 @@
 import {
   ConsoleUserAccessTokenRepositoryInterface,
   ValidateAccessTokenData,
-} from '@Src/domain/repositories/consoleUserAccessToken';
+} from '@Src/domain/interface/repositories/consoleUserAccessToken';
 import { ICallback } from '@Src/domain/type/common.interface';
 
 export class ValidateAccessTokenUC {

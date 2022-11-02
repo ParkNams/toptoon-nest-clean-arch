@@ -3,9 +3,9 @@ import {
   GetConsoleUserAccessTokenData,
   ConsoleUserAccessTokenRepositoryInterface,
   ValidateAccessTokenData,
-} from 'src/domain/repositories/consoleUserAccessToken';
+} from '@Src/domain/interface/repositories/consoleUserAccessToken';
 import { ICallback } from 'src/domain/type/common.interface';
-import { ConsoleUserAccessTokenEntity } from 'src/infra/entities/consoleUserAccessToken.entity';
+import { ConsoleUserAccessTokenEntity } from '@Src/infra/mysql/entities/consoleUserAccessToken.entity';
 import { EntityManager, Raw } from 'typeorm';
 
 export class ConsoleUserAccessTokenRepository
@@ -24,7 +24,10 @@ export class ConsoleUserAccessTokenRepository
         where: { consoleUserId },
       })
       .then(value => callback(null, value))
-      .catch(err => callback(err));
+      .catch(err => {
+        console.log(err);
+        callback(err);
+      });
   }
 
   validateAccessToken(

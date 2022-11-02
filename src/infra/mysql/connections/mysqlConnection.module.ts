@@ -9,7 +9,7 @@ const mysqlProviders = [
         type: 'mysql',
         entities: [
           // 'src/infra/entities/**/*.entityentity{.ts,.js}',
-          'dist/infra/entities/**/*.entity{.ts,.js}',
+          'dist/infra/mysql/entities/**/*.entity{.ts,.js}',
         ],
         replication: {
           master: {

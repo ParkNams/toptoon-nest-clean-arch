@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { MysqlConnectionModule } from '@Src/infra/connections/mysqlConnection.module';
+import { MysqlConnectionModule } from '@Src/infra/mysql/connections/mysqlConnection.module';
 import { DataSource } from 'typeorm';
 import { ConsoleUserAccessTokenRepository } from './consoleUserAccessToken.repository';
 
@@ -8,9 +8,9 @@ import { ConsoleUserAccessTokenRepository } from './consoleUserAccessToken.repos
   providers: [
     ConsoleUserAccessTokenRepository,
     {
-      provide: 'CONSOLE_USER_ACCESS_TOKEN_SLAVE',
+      provide: 'CONSOLE_USER_ACCESS_TOKEN_MASTER',
       useFactory: (datasource: DataSource) =>
-        datasource.createQueryRunner('slave').manager,
+        datasource.createQueryRunner('master').manager,
       inject: ['GLOBAL'],
     },
     {

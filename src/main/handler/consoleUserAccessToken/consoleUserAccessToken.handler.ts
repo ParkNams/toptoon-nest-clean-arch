@@ -1,10 +1,10 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { UseCaseProxy } from '@Src/proxy/usecase-proxy/usecase.proxy';
-import { CUATUseCaseProxyModule } from '@Src/proxy/usecase-proxy/CUATUsecaseProxy.module';
+import { MysqlProxy } from '@Src/proxy/mysql-proxy/mysql.proxy';
+import { CUATUseCaseProxyModule } from '@Src/proxy/mysql-proxy/CUATUsecaseProxy.module';
 import {
   GetConsoleUserAccessTokenData,
   ValidateAccessTokenData,
-} from 'src/domain/repositories/consoleUserAccessToken';
+} from '@Src/domain/interface/repositories/consoleUserAccessToken';
 import { ICallback } from 'src/domain/type/common.interface';
 import { GetConsoleUserAccessTokenUC } from '@Src/application/usecases/consoleUserAccessToken/getConsoleUserAccessToken';
 import { Handler } from '../handler';
@@ -16,7 +16,7 @@ export class GetConsoleUserAccessTokenHandler extends Handler<
 > {
   constructor(
     @Inject(CUATUseCaseProxyModule.GET_CONSOLE_USER_ACCESS_TOKNE_PROXY)
-    private readonly proxy: UseCaseProxy<GetConsoleUserAccessTokenUC>,
+    private readonly proxy: MysqlProxy<GetConsoleUserAccessTokenUC>,
   ) {
     super();
   }
@@ -40,7 +40,7 @@ export class ValidateAccessTokenHandler extends Handler<
 > {
   constructor(
     @Inject(CUATUseCaseProxyModule.ACCESS_TOKEN_VALIDATE_PROXY)
-    private readonly proxy: UseCaseProxy<ValidateAccessTokenUC>,
+    private readonly proxy: MysqlProxy<ValidateAccessTokenUC>,
   ) {
     super();
   }

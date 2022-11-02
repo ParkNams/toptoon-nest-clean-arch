@@ -1,5 +1,5 @@
-import { ConsoleUserAccessToken } from '../entities/consoleUserAccessToken';
-import { ICallback } from '../type/common.interface';
+import { ConsoleUserAccessToken } from '../../entities/consoleUserAccessToken';
+import { ICallback } from '../../type/common.interface';
 
 export interface ConsoleUserAccessTokenRepositoryInterface {
   getOne: (

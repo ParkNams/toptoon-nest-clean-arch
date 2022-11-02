@@ -1,7 +1,7 @@
 import {
   GetConsoleUserAccessTokenData,
   ConsoleUserAccessTokenRepositoryInterface,
-} from 'src/domain/repositories/consoleUserAccessToken';
+} from '@Src/domain/interface/repositories/consoleUserAccessToken';
 import { ICallback } from 'src/domain/type/common.interface';
 
 export class GetConsoleUserAccessTokenUC {
