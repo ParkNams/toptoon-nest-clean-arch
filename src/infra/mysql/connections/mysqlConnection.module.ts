@@ -30,7 +30,7 @@ const mysqlProviders = [
           ],
         },
         logging: process.env.ENVIRONMENT === 'development',
-        synchronize: true,
+        synchronize: false,
         extra: {
           connectionLimit: process.env.ENVIRONMENT === 'development' ? 18 : 38,
         },
